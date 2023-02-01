@@ -12,11 +12,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: npm i
-  displayName: 'install npm dependecies'
+- script: docker build -t azdev . 
+  displayName: 'build image'
 
-- script: npm run build
-  displayName: 'app build'  
+# - script: docker run -d -p 80:80 --name azdev azdev 
+#   displayName: 'app build'  
 
 # - script: |
 #     echo Add other tasks to build, test, and deploy your project.
