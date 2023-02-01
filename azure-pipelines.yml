@@ -11,9 +11,17 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: docker build -t azdev . 
-  displayName: 'build image'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'azdevacr'
+    repository: 'azdevtest'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
+
+# steps:
+# - script: docker build -t azdev . 
+#   displayName: 'build image'
 
 # - script: docker run -d -p 80:80 --name azdev azdev 
 #   displayName: 'app build'  
